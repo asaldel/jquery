@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+
+        <style>
+            .clase1{
+                background-color: yellow;
+            }
+
+            .clase2{
+                border: 1px dashed green;
+                background-color: white;
+            }
+        </style>
+    </head>
+    <body>
+		<!-- Select/Deselect/Invert/Count -->
+		<form action="">
+			<input type="checkbox" name="chk" id="chk1">
+			<input type="checkbox" name="chk" id="chk2">
+			<input type="checkbox" name="chk" id="chk3">
+			<input type="checkbox" name="chk" id="chk4">
+			<input type="checkbox" name="chk" id="chk5">
+			<input type="checkbox" name="chk" id="chk6">
+			<input type="checkbox" name="chk" id="chk7">
+			<input type="checkbox" name="chk" id="chk8">
+			<input type="checkbox" name="chk" id="chk9">
+			<input type="checkbox" name="chk" id="chk10">
+		</form>
+		<button type="button" id="seleccionarTodos">Seleccionar todos</button>
+		<button type="button" id="deseleccionarTodos">Deseleccionar todos</button>
+		<button type="button" id="invertir">Invertir selección</button>
+        <button type="button" id="contar">Contar seleccionados</button>
+        
+        <div id="miCaja"></div>
+
+        <!-- Clases CSS -->
+        <button type="button" id="addClass" onclick="$(this).addClass('clase1')">Añadir clase</button>
+        <button type="button" id="delClass" class="clase1" onclick="$(this).removeClass('clase1')">Eliminar clase</button>
+        <button type="button" id="togClass" onclick="$(this).toggleClass('clase2')">Intercambiar clase</button>
+        <button type="button" id="togClass" class="clase2" onclick="alert($(this).hasClass('clase2'))">Tiene clase</button>
+
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+		<script>
+			$(document).ready(function(){
+				// Select/Deselect/Invert/Count
+				$("#seleccionarTodos").click(function(){
+					$(":checkbox").prop("checked", true);
+				});
+
+				$("#deseleccionarTodos").click(function(){
+					$(":checkbox").prop("checked", false);
+				});
+
+				$("#invertir").click(function(){
+					$(":checkbox").prop("checked", function(indice, valor){
+						return !valor;
+					});
+				});
+
+				$("#contar").click(function(){
+					alert("Hay " + $("input:checked").length + " seleccionados");
+				});
+                
+                /* removeProp, removeAttr */
+                $("#chk4").removeAttr("id");
+
+                $("#chk5").attr("idx", 5);
+
+                $("#chk5").prop({"idy": 5, "idz": 5});
+
+                $("#chk5").removeAttr("idx");
+
+                $("#chk5").removeProp("idy");
+                
+
+                /* CSS getter */
+                console.log($("#contar").css("background-color"));
+
+                /* CSS Setter */
+                // $("#contar").css("background-color", "red");
+                $("#contar").css({"background-color": "red", "font-size": "20px", "color": "white", "padding": "20px"});
+
+                $("#miCaja").css({"width": "50px", "height": "80px", "border": "5px solid red", "padding": "10px", "margin": "15px"});
+                
+                $("#miCaja").click(function(){
+                    $(this).text($(this).height() + " | " + $(this).width());
+                });
+
+                $("#miCaja").click(function(){
+                    $(this).text($(this).innerHeight() + " | " + $(this).innerWidth());
+                });
+
+                $("#miCaja").click(function(){
+                    $(this).text($(this).outerHeight() + " | " + $(this).outerWidth());
+                });
+
+                $("#miCaja").click(function(){
+                    $(this).text($(this).outerHeight(true) + " | " + $(this).outerWidth(true));
+                });
+
+                $("#miCaja").click(function(){
+                    $(this).width($(this).width() - 5);
+                });
+                
+                /* Uso de variables con JS y jQuery */
+                /* JS */
+                var miCaja = document.getElementById("miCaja");
+                // miCaja.text("Hola"); // No funciona
+
+                /* jQuery */
+                var $miCaja = $("#miCaja");
+                $miCaja.text("Hola"); // Funciona
+			});
+		</script>
+    </body>
+</html>

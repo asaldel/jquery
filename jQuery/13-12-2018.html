@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+		<style>
+			.marca{
+				border: 1px solid red;
+			}
+		</style>
+    </head>
+    <body>
+		<ul>
+			<li class="c1"><span>Texto 0</span></li>
+			<li class="c1">Texto 1</li>
+			<li class="c2">Texto 2</li>
+			<li class="c2"><span>Texto 3</span></li>
+			<li class="c1">Texto 4</li>
+			<li class="c3">Texto 5</li>
+			<li class="c1"><span>Texto 6</span></li>
+			<li class="c3">Texto 7</li>
+		</ul>
+
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+		<script>
+			$(document).ready(function(){
+				// Filtros
+				/* console.log($("ul")
+					.children()
+						// eq() -> Reduce the set of matched elements to the one at the specified index.
+						.eq(2)
+						.addClass("marca")
+						// end() -> End the most recent filtering operation in the current chain and return the set of matched elements to its previous state.
+						.end()
+					.end()
+					.css("background-color", "green")
+					.length
+				); */
+
+				// slice() -> Reduce the set of matched elements to a subset specified by a range of indices.
+				/* console.log($("ul")
+					.children()
+						.slice(2, 6)
+						.eq(2)
+						.addClass("marca")
+						.end()
+					.end()
+					.css("background-color", "green")
+					.length
+				); */
+				
+				// filter() ->  Reduce the set of matched elements to those that match the selector or pass the function's test.
+				/* console.log($("ul")
+					.children()
+					.filter(".c1")
+					.css("background-color", "green")
+					.end()
+					.filter(".c2")
+					.css("background-color", "blue")
+					.length
+				); */
+				
+				// add() -> Create a new jQuery object with elements added to the set of matched elements.
+				/* console.log($("ul")
+					.children()
+					.filter(".c1")
+					.add(".c3")
+					.css("background-color", "green")
+					.end()
+					.filter(".c2")
+					.css("background-color", "blue")
+					.length
+				); */
+
+				// addBack() -> Add the previous set of elements on the stack to the current set, optionally filtered by a selector.
+				/* console.log($("ul")
+					.children()
+					.filter(".c1")
+					.css("border", "3px dashed red")
+					.addBack(".c3")
+					.css("background-color", "green")
+					.end()
+					.filter(".c2")
+					.css("background-color", "blue")
+					.length
+				); */
+				
+				// has() -> Reduce the set of matched elements to those that have a descendant that matches the selector or DOM element.
+				/* $("li")
+					.has("span")
+					.css("background-color", "blue") */
+
+				// not() -> Remove elements from the set of matched elements.
+				/* $("li")
+					.has("span")
+					.not(".c2")
+					.css("background-color", "blue") */	
+				
+				// last() -> Reduce the set of matched elements to the final one in the set.
+				/* $("li")
+					.has("span")
+					.last()
+					.css("background-color", "blue") */
+				
+				// first() -> Reduce the set of matched elements to the first in the set.
+				/* $("li")
+					.has("span")
+					.first()
+					.css("background-color", "blue") */
+
+				// each() -> Iterate over a jQuery object, executing a function for each matched element.
+				$("li")
+					.each(function(i, e){
+						console.log(i, e.nodeType, $(this).text());
+						$(this).html("<strong>" + $(this).text() + " " + i + "</strong>");
+						if(i == 4){
+							return false;
+						}
+					});	
+			});
+		</script>
+    </body>
+</html>

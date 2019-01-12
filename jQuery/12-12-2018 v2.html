@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+		<style>
+			div{
+				padding: 8px;
+				border: 1px solid green;
+			}
+		</style>
+    </head>
+    <body>
+		<div id="d1" style="border: 1px solid red">
+			<div id="d2" style="border: 1px solid orange">
+				<div id="d3" style="border: 1px solid blue;">
+					<ul id="u1">
+						<li id="i1"><span id="s1">XXXXX1</span></li>
+						<li id="i2"><span id="s2">XXXXX2</span></li>
+						<li id="i3"><span id="s3">XXXXX3</span></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		
+		<script>
+			$(document).ready(function(){
+				// parent()
+				$("#s3").parent().parent().css("background-color", "red");
+				
+				// parents() -> Todos los padres del nodo actual 
+				$("#s3").parents().css("background-color", "red");
+
+				// parentsUntil() -> Coge hasta el elemento que se le pasa, este elemento no incluido
+				$("#s3").parentsUntil("#d3").css("border", "1px solid yellow");
+
+				// children() -> El descendiente directo del elemento
+				$("#d1").children().css("background-color", "green");
+
+				// find() -> Busca por todos los hijos del elemento
+				$("#d1").find().css("border", "1px solid white");
+
+				// next()
+
+				// nextAll()
+
+				// nextUntil()
+
+				// prev()
+
+				// prevAll()
+
+				// prevUntil()
+
+				// siblings()
+
+				// closest() -> Devuelve el elemento mas cercano por arriba
+
+				// offsetParent() -> Devuelve el primer elemento posicionado
+
+				// contents() -> Devuelve cualquier tipo de nodo
+			});	
+		</script>
+    </body>
+</html>

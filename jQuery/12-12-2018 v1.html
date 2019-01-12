@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+		<style>
+			div{
+				padding: 8px;
+				border: 1px solid green;
+			}
+		</style>
+    </head>
+    <body>
+		<div id="d1" style="border: 1px solid red">
+			<div id="d2" style="border: 1px solid orange">
+				<div id="d3" style="border: 1px solid blue">
+					<ul id="u1">
+						<li id="i1"><span id="s1">XXXXX1</span></li>
+						<li id="i2"><span id="s2">XXXXX2</span></li>
+						<li id="i3"><span id="s3">XXXXX3</span></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		
+		<script>
+			document.getElementById("d1").addEventListener("click", function(){ alert("Hola");});
+
+			$(document).ready(function(){
+				// Inserción de nodos
+				/* // viejo -> nuevo
+				$("#d3").prepend($("<div/>", {"id":"X", "class":"prueba"}));
+				
+				// nuevo -> viejo
+				$("<div/>", {"id":"X", "class":"prueba"}).prependTo($("#d3")); */
+				
+				var $divX = $("<div/>", {"id":"X", "class":"prueba"});
+				$("#d3").prepend($divX);
+
+				$($divX).prependTo($("#d2"));
+
+				// clone()
+				// $("#d1").clone().insertAfter($("#d1"));
+				
+				// wrap()
+				$("#s3").wrap("<strong/>");
+
+				// wrapInner()
+				$("li").wrapInner("<strong/>");
+
+				// wrapAll()
+				// $("div").wrapAll("<strong/>");
+
+				// Borrado de nodos
+				// empty() -> Eliminar toda la descendencia
+				//$("#d2").empty();
+
+				// remove() -> Eliminar toda la descendencia y el propio nodo
+				// $("#d2").remove();
+
+				// detach() -> Sólo desaparece del DOM, se puede capturar y volver a añadir al DOM
+				var $d2 = $("#d2").detach();
+				$("#d1").append($d2);
+
+				// unwrap()
+				// $("#d3").unwrap();
+
+				// replaceWith()
+				//$("#d2").replaceWith("<h3>Esto es una prueba</h3>");
+
+				// replaceAll()
+				// $("<h3>Hola Mundo</h3>").replaceAll("li");
+			});
+		</script>
+    </body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+		<!-- HTML Setter -->
+		<div id="midiv7">AAA</div>
+		<div id="midiv8">BBB</div>
+		<div id="midiv9">CCC</div>
+		<div id="midiv10">DDD</div>
+		<div id="midiv11">EEE</div>
+		<div id="midiv12">FFF</div>
+
+		<!-- HTML Getter -->
+		<div id="midiv7">AAA</div>
+		<div id="midiv8">BBB</div>
+		<div id="midiv9">CCC</div>
+		<div id="midiv10">DDD</div>
+		<div id="midiv11">EEE</div>
+		<div id="midiv12">FFF</div>
+
+		<!-- Text Setter -->
+		<div id="midiv13">AAA</div>
+		<div id="midiv14">BBB</div>
+		<div id="midiv15">CCC</div>
+		<div id="midiv16">DDD</div>
+		<div id="midiv17">EEE</div>
+		<div id="midiv18">FFF</div>
+
+		<!-- Text Getter -->
+		<div id="midiv19">AAA</div>
+		<div id="midiv20">BBB</div>
+		<div id="midiv21">CCC</div>
+		<div id="midiv22">DDD</div>
+		<div id="midiv23">EEE</div>
+		<div id="midiv24">FFF</div>
+
+		<!-- Val Setter-->
+		<form action="">
+			<label for="">Nombre</label>
+			<input type="text">
+			<label for="">Apellido</label>
+			<input type="text">
+			<button type="button">Enviar</button>
+		</form>
+
+		<!-- Val Getter-->
+		<form action="">
+			<label for="">Nombre</label>
+			<input type="text" value="Esto es otro input">
+			<label for="">Apellido</label>
+			<input type="text" value="Esto es otro input">
+			<button type="button">Enviar</button>
+		</form>
+
+		<!-- Atributos y propiedades -->
+		<form action="">
+			<label for="nombre">Nombre</label>
+			<input type="text" id="nombre" value="AAA">
+			<label for="apellido">Apellido</label>
+			<input type="text" id="apellido" value="BBB">
+			<button type="button">Enviar</button>
+		</form>
+		<button type="button" id="mostrar">Mostrar</button>
+
+		<!-- Select/Deselect/Invert/Count -->
+		<form action="">
+			<input type="checkbox" name="chk" id="chk1">
+			<input type="checkbox" name="chk" id="chk2">
+			<input type="checkbox" name="chk" id="chk3">
+			<input type="checkbox" name="chk" id="chk4">
+			<input type="checkbox" name="chk" id="chk5">
+			<input type="checkbox" name="chk" id="chk6">
+			<input type="checkbox" name="chk" id="chk7">
+			<input type="checkbox" name="chk" id="chk8">
+			<input type="checkbox" name="chk" id="chk9">
+			<input type="checkbox" name="chk" id="chk10">
+		</form>
+		<button type="button" id="seleccionarTodos">Seleccionar todos</button>
+		<button type="button" id="deseleccionarTodos">Deseleccionar todos</button>
+		<button type="button" id="invertir">Invertir selección</button>
+		<button type="button" id="contar">Contar seleccionados</button>
+
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+		<script>
+			$(document).ready(function(){
+				/* HTML Setter */
+				$("div").html("<strong>Esto es una prueba</strong>")
+
+				/* HTML Getter */
+				$("div").html();
+
+				/* Text Setter */
+				$("div").text("<strong>Esto es una prueba</strong>")
+
+				/* Text Getter */
+				$("div").html();
+
+				/* Val Setter */
+				// $("input").val("Esto es un input");
+
+				/* Val Getter */
+				// $("input").val();
+				
+				/* Función con html */
+				$("div").html(function(indice, texto){
+					return "<strong>" + texto + "</strong>" + "(" + indice + ")";
+				});
+
+				/* Función con val */
+				/* $("input").val(function(indice, texto){
+					return texto + " - " + indice;
+				}); */
+				
+				/* Atributos y propiedades */
+				$("#mostrar").click(function(){
+					console.log($("#nombre").val());
+					console.log($("#nombre").attr("value"));
+					console.log($("#nombre").prop("value"));
+				});
+
+				// Select/Deselect/Invert/Count
+				$("#seleccionarTodos").click(function(){
+					$(":checkbox").prop("checked", true);
+				});
+
+				$("#deseleccionarTodos").click(function(){
+					$(":checkbox").prop("checked", false);
+				});
+
+				$("#invertir").click(function(){
+					$(":checkbox").prop("checked", function(indice, valor){
+						return !valor;
+					});
+				});
+
+				$("#contar").click(function(){
+					alert("Hay " + $("input:checked").length + " seleccionados");
+				});
+			});
+
+			console.log(Object.keys($));
+			// Guardado de variable en $
+			$.inputs = $(":input");
+			console.log(Object.keys($));
+
+		</script>
+    </body>
+</html>

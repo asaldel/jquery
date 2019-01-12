@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+		
+		<style>
+			div{
+				border: 1px solid red;
+			}
+		</style>
+    </head>
+    <body>
+		<div id="midiv">&nbsp;</div>
+		
+		<br>
+
+		<div id="midiv1">&nbsp;</div>
+		<div id="midiv2">&nbsp;</div>
+		<div id="midiv3">&nbsp;</div>
+		<div id="midiv4">&nbsp;</div>
+		<div id="midiv5">&nbsp;</div>
+		<div id="midiv6">&nbsp;</div>
+
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+		<script>
+			/* jq = $.noConflict(); // Desacoplar el $ de jQuery */
+			$("#midiv").html("Hola");
+
+			$("div").click(function(){ alert("Hola"); }); // Mostrar un alert con "Hola" al pulsar en todos los div
+
+			$("input") // CSS
+			$("input::after") // CSS 
+			$("input:valid") // CSS
+			$(":input") // Selecciona todos los campos de entrada del formulario
+
+		</script>
+
+		
+    </body>
+</html>

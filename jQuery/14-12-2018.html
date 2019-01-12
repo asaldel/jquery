@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+		<div id="container">
+			<input id="c1" type="checkbox" checked>
+			<input id="c2" type="checkbox">
+			<input id="c3" type="checkbox">
+			<input id="c4" type="checkbox">
+			<input id="c5" type="checkbox">
+		</div>
+
+		<button type="button" id="crear">Crear</button>
+		<button type="button" id="quitar">Quitar evento</button>
+
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+		<script>
+			$(document).ready(function(){
+				// Mostrar en un alert si los checkbox hijos del div#container están checked o no
+				/* $("#container :checkbox").click(function(){
+					alert($(this).prop("checked"));
+				}); */
+				
+				// bind()
+				/* $("#container :checkbox").bind("click", function(){
+					alert($(this).prop("checked"));
+				}); */
+
+				// on()
+				/* $("#container :checkbox").on("click", function(){
+					alert($(this).prop("checked"));
+				}); */
+
+				// on() -> Funciona con más de 1 evento en la función
+				/* $("#container :checkbox").on("click mouseover", function(){
+					alert($(this).prop("checked"));
+				 */
+
+				// Creación de un nuevo checkbox que se añade antes del fin del div#container
+				function crear(){
+					$("<input>", {"type": "checkbox"}).appendTo("#container");
+				}
+				$("#crear").click(crear); 
+
+				// Añadir los eventos a los elementos de tipo checkbox recién creados, que sean hijos del div#container 
+				/* $("#container").on("click mouseover", ":checkbox", function(){
+					alert($(this).prop("checked"));
+				}); */
+				
+				// on() -> Añadir datos al elemento
+				/* $("#container").on("click mouseover", ":checkbox", {name: "pepe"}, function(e){
+					//alert($(this).prop("checked"));
+					alert(e.data.name);
+				}); */
+				
+				// one()
+				/* $("#container").one("click mouseover", ":checkbox", function(){
+					alert($(this).prop("checked"));
+				}); */
+
+				// on() -> Añadir varios eventos con diferentes comportamientos a los elementos 
+				/* $("#container :checkbox").on({
+					"mouseover click": function(){
+						alert("AAA");
+					},
+					"mouseout": function(){
+						alert("BBB");
+					}
+				});  */
+
+				// is()
+				/* $("#container :checkbox").on({
+					"mouseover click": function(){
+						if($(this).is("#c1")){
+							alert("Soy el c1");
+						}
+						else{
+							alert("Soy otro");
+						}
+					},
+					"mouseout": function(){
+						alert("BBB");
+					}
+				}); */
+
+				// off() -> Quitar eventos
+				/* $("#quitar").click(function(){
+					$("#container :checkbox").off();
+				}); */
+
+				// off() -> Quitar un evento específico
+				/* $("#quitar").click(function(){
+					$("#container :checkbox").off("mouseover");
+				}); */
+
+				// off() -> Quitar más de 1 evento específico
+				/* $("#quitar").click(function(){
+					$("#container :checkbox").off("mouseover click");
+				}); */
+
+				// on() -> Sobrecargar un mismo evento con comportamientos diferentes
+				/* $("#container :checkbox").on({
+					"mouseover click": function(){
+						if($(this).is("#c1")){
+							alert("Soy el c1");
+						}
+						else{
+							alert("Soy otro");
+						}
+					},
+					"click": function(){
+						alert("CCC");
+					},
+					"mouseout": function(){
+						alert("BBB");
+					}
+				}); */
+
+				// Poner "alias" a eventos	
+				$("#container :checkbox").on({
+					"mouseover click.luis": function(){
+						if($(this).is("#c1")){
+							alert("Soy el c1");
+						}
+						else{
+							alert("Soy otro");
+						}
+					},
+					"click.juan": function(){
+						alert("CCC");
+					},
+					"mouseout": function(){
+						alert("BBB");
+					}
+				});
+
+				// off() -> Borrar eventos con "alias"
+				$("#quitar").click(function(){
+					$("#container :checkbox").off("mouseover click.luis");
+				});
+
+				// trigger()
+
+				// position()
+
+				// offset() -> Devuelve un objeto con la posición X y la posición Y
+
+				// data() -> Añadir propiedad. Con getter y setter
+
+				// removeData() -> Eliminar propiedad			
+			});				
+		</script>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- Efectos CSS: Métodos show/hide, fade, slide, animate-->
+        <!-- Los métodos reciben dos parametros: duración y función callback-->
+
+        <!-- Hide -->
+        <span id="miTexto" onclick="$(this).hide()">Esto es una prueba</span>
+
+        <br>
+
+        <!-- Fade -->
+        <span id="miTexto" onclick="escondete($(this))">Esto es una prueba</span>
+
+        <br>
+
+        <span id="miTexto2" onclick="$(this).fadeToggle(1000, escondeteToggle)">Esto es una prueba</span>
+
+        <br>
+
+        <span id="miTexto3" onclick="$(this).fadeTo(3000, 0.5)">Esto es una prueba</span>
+
+        <br>
+
+        <!-- Slide -->
+        
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        
+        <script>
+            function escondete($elem){
+                $elem.fadeOut(2000).fadeIn(2000);
+            }
+
+            function escondeteToggle(){
+                $("#miTexto2").fadeToggle(1000, escondeteToggle);
+            }
+        </script>
+    </body>
+</html>
